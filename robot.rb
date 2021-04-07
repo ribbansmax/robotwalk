@@ -1,5 +1,5 @@
 class Robot
-  def return?(string)
+  def bounded?(string)
     # position indexes are for N, E, S, W
     position = [0, 0, 0, 0]
     direction = 0
@@ -13,19 +13,6 @@ class Robot
         direction = (direction - 1) % 4
       end
     end
-    (position[0] == position[2]) && (position[1] == position[3])
-  end
-
-  def bounded?(string)
-    direction = 0
-    until string.length == 0
-      command = string.slice!(0)
-      if command == 'r'
-        direction = (direction + 1) % 4
-      else
-        direction = (direction - 1) % 4
-      end
-    end
-    direction != 0
+    (position[0] == position[2]) && (position[1] == position[3]) || direction != 0
   end
 end
